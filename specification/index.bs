@@ -152,7 +152,7 @@ The <a href="#key-externally_connectable">`externally_connectable`</a> key decla
 
 A connection from an external web page or extension triggers the [=runtime.onConnectExternal=] event listener to fire. Similarly, a message sent by an external web page or extension triggers the [=runtime.onMessageExternal=] event listener to fire.
 
-These events are not available to web pages, only in privileged extension contexts.
+These events are not available to web pages, only in a [=privileged extension context=].
 
 This key may be present and may include the following optional keys:
 
