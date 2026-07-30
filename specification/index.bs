@@ -152,6 +152,8 @@ The <a href="#key-externally_connectable">`externally_connectable`</a> key decla
 
 A connection from an external web page or extension triggers the [=runtime.onConnectExternal=] event listener to fire. Similarly, a message sent by an external web page or extension triggers the [=runtime.onMessageExternal=] event listener to fire.
 
+These events are not available to web pages, only in privileged extension contexts.
+
 This key may be present and may include the following optional keys:
 
 #### Key `ids`
@@ -162,7 +164,7 @@ A [=list=] of [=extension IDs=] that specifies which extensions can communicate 
 
 A [=list=] of [=match patterns=] that specifies which web pages can communicate with the extension. If left empty or omitted, no web pages can connect.
 
-Any [=match patterns=] that include wildcard domains, or wildcard subdomains of a top-level domain, must be ignored.
+Note: Only the document's own URL is used for matching. There is no fallback to the URL of the document that created it.
 
 ### Key `devtools_page`
 
