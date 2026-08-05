@@ -156,11 +156,11 @@ These events are not available to web pages, only in a [=privileged extension co
 
 This key may be present and may include the following optional keys:
 
-#### Key `ids`
+#### Key `ids` #### {#key-externally_connectable-ids}
 
 A [=list=] of [=extension IDs=] that specifies which extensions can communicate with the extension. To allow all extensions to connect, include the wildcard pattern `*`. If left empty or omitted while the `externally_connectable` key is present, no extensions can connect.
 
-#### Key `matches`
+#### Key `matches` #### {#key-externally_connectable-matches}
 
 A [=list=] of [=match patterns=] that specifies which web pages can communicate with the extension. If left empty or omitted, no web pages can connect.
 
@@ -275,13 +275,13 @@ A <dfn>glob</dfn> can be any [=string=]. It can contain any number of wildcards 
 
 Content scripts represent a set of JS and CSS files that should be injected into matching pages loaded by the user agent. They are injected using the steps in [[#inject-a-content-script]]. Content scripts run in an [=isolated world=] by default.
 
-### Key `matches`
+### Key `matches` ### {#key-content_scripts-matches}
 
 A [=list=] of [=match patterns=] that are used to decide which pages the user agent injects the content script into. This key is required.
 
 ### Key `exclude_matches`
 
-A [=list=] of [=match patterns=] that can be used to specify URLs where the content script should not run, even if the URL matches entries in [[#key-matches]] and (if specified) [[#key-include_globs]].
+A [=list=] of [=match patterns=] that can be used to specify URLs where the content script should not run, even if the URL matches entries in [[#key-content_scripts-matches]] and (if specified) [[#key-include_globs]].
 
 ### Key `js`
 
@@ -303,7 +303,7 @@ If this is `true`, use the URL of the parent frame when matching a child frame w
 
 If this is `true`, use fallbacks as described in [[#determine-the-url-for-matching-a-document]].
 
-No path is available when the URL to match against falls back to an origin. Therefore, when set, the user agent may treat a [[#key-matches]] with a path other than `/*` as an error.
+No path is available when the URL to match against falls back to an origin. Therefore, when set, the user agent may treat a [[#key-content_scripts-matches]] with a path other than `/*` as an error.
 
 Defaults to `false`.
 
@@ -313,11 +313,11 @@ Specifies when the content script should be injected. Valid values are defined b
 
 ### Key `include_globs`
 
-A list of [=globs=] that a document should match. A document matches if the URL matches both the [[#key-matches]] field and the [[#key-include_globs]] field.
+A list of [=globs=] that a document should match. A document matches if the URL matches both the [[#key-content_scripts-matches]] field and the [[#key-include_globs]] field.
 
 ### Key `exclude_globs`
 
-A [=list=] of [=globs=] that can be used to specify URLs where the content script should not run, even if the URL matches entries in [[#key-matches]] and (if specified) [[#key-include_globs]].
+A [=list=] of [=globs=] that can be used to specify URLs where the content script should not run, even if the URL matches entries in [[#key-content_scripts-matches]] and (if specified) [[#key-include_globs]].
 
 ### Key `world`
 
