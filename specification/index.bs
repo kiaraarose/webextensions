@@ -150,15 +150,15 @@ This key may be present.
 
 The <a href="#key-externally_connectable">`externally_connectable`</a> key declares which extensions and web pages can establish connections to the extension using [=runtime.connect()=] and [=runtime.sendMessage()=]. If omitted, all extensions may connect, but no web pages can connect.
 
-A connection from an external web page or extension triggers the [=runtime.onConnectExternal=] event listener to fire. Similarly, a message sent by an external web page or extension triggers the [=runtime.onMessageExternal=] event listener to fire.
-
-These events are not available to web pages, only in a [=privileged extension context=].
+A call to [=runtime.connect()=] from an external web page or extension triggers the [=runtime.onConnectExternal=] event listener to fire. Similarly, a message sent by an external web page or extension with [=runtime.sendMessage()=] triggers the [=runtime.onMessageExternal=] event listener to fire. These events are only available in a [=privileged extension context=], not in web pages or less-privileged contexts like [=content scripts=].
 
 This key may be present and may include the following optional keys:
 
 #### Key `ids` #### {#key-externally_connectable-ids}
 
-A [=list=] of [=extension IDs=] that specifies which extensions can communicate with the extension. To allow all extensions to connect, include the wildcard pattern `*`. If left empty or omitted while the `externally_connectable` key is present, no extensions can connect.
+A [=list=] of [=extension IDs=] that specifies which extensions can communicate with the extension. To allow all extensions to connect, include the wildcard pattern `"*"`.
+
+Note: The default of whether an extension can connect changes based on whether the `externally_connectable` key is present. If the key is omitted, the default is to allow all extensions to connect. If the key is present, no extensions can connect unless specified in `"ids"`, even if the `"ids"` key is ommitted.
 
 #### Key `matches` #### {#key-externally_connectable-matches}
 
